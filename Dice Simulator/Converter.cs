@@ -28,6 +28,8 @@ namespace Dice_Simulator
                     return Path.Combine("Images", "Die5.bmp");
                 case DieImageCodes.SIX:
                     return Path.Combine("Images", "Die6.bmp");
+                case DieImageCodes.TWENTY_SIDE:
+                    return Path.Combine("Images", "20Dice.png");
                 default:
                     return String.Empty;
             }

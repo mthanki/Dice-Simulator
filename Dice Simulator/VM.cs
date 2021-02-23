@@ -16,15 +16,15 @@ namespace Dice_Simulator
             THREE,
             FOUR,
             FIVE,
-            SIX
+            SIX,
+            TWENTY_SIDE
         }
 
         public enum DiceSounds
         {
             ONE = 1,
             TWO,
-            THREE,
-            FOUR
+            THREE
         }
 
         readonly System.Random r = new Random();
@@ -34,7 +34,7 @@ namespace Dice_Simulator
         public bool TwentySideDice
         {
             get { return twentySideDice; }
-            set { twentySideDice = value; notifyChange(); }
+            set { twentySideDice = value; notifyChange(); resetBoard(); }
         }
 
         private bool sound = false;
@@ -57,21 +57,48 @@ namespace Dice_Simulator
             get { return secondDiceImageCode; }
             set { secondDiceImageCode = value; notifyChange(); }
         }
+
+
+        private int firstTwentyDice = 0;
+        public int FirstTwentyDice
+        {
+            get { return firstTwentyDice; }
+            set { firstTwentyDice = value; notifyChange(); }
+        }
+
+        private int secondTwentyDice = 0;
+        public int SecondTwentyDice
+        {
+            get { return secondTwentyDice; }
+            set { secondTwentyDice = value; notifyChange(); }
+        }
         #endregion
 
         public void RollDice()
         {
-            int die1 = r.Next(1, 7);
-            int die2 = r.Next(1, 7);
+            int die1 = r.Next(1, TwentySideDice ? 21 : 7);
+            int die2 = r.Next(1, TwentySideDice ? 21 : 7);
 
             FirstDiceImageCode = (DieImageCodes)die1;
             SecondDiceImageCode = (DieImageCodes)die2;
+
+            if (TwentySideDice)
+            {
+                FirstDiceImageCode = SecondDiceImageCode = DieImageCodes.TWENTY_SIDE;
+                FirstTwentyDice = die1;
+                SecondTwentyDice = die2;
+            }
 
             //string rollSound = Environment.CurrentDirectory + $"..\\..\\..\\Sounds\\4.wav";
             //SoundPlayer s = new SoundPlayer();
             //s.SoundLocation = testrollSound;
             //s.Load();
             //s.Play();
+        }
+
+        public void resetBoard()
+        {
+
         }
         #region Property Changed
         public event PropertyChangedEventHandler PropertyChanged;
