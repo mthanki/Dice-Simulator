@@ -30,32 +30,17 @@
                 <BlurEffect x:Name="BackgroundBlur" Radius="10"/>
             </Image.Effect>
         </Image>
-        <!--
-        <Viewbox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-            <ComboBox Background="Transparent" FontStyle="Italic" FontWeight="DemiBold" Width="100">
-                <ComboBoxItem>Selection 1</ComboBoxItem>
-                <ComboBoxItem>Selection 1</ComboBoxItem>
-                <ComboBoxItem>Selection 1</ComboBoxItem>
-                <ComboBoxItem>Selection 1</ComboBoxItem>
-            </ComboBox>
-        </Viewbox>
-        -->
-        <Viewbox Grid.Column="2" >
+        <Viewbox Grid.Column="3" >
             <Viewbox.Effect>
                 <DropShadowEffect Color="#FF00FF0C" BlurRadius="5"/>
             </Viewbox.Effect>
             <CheckBox Content="20 Side Dice" Foreground="#FFFF3000" IsChecked="{Binding TwentySideDice}" FontStyle="Italic" FontWeight="DemiBold" Width="100" BorderBrush="Red" Background="White"></CheckBox>
         </Viewbox>
-        <Viewbox Grid.Column="3" >
-            <Viewbox.Effect>
-                <DropShadowEffect Color="#FF0CFF29" BlurRadius="5"/>
-            </Viewbox.Effect>
-            <CheckBox Content="Sound" Foreground="#FFFF3000" FontWeight="DemiBold" FontStyle="Italic" Width="100" BorderBrush="#FFFC0000"></CheckBox>
-        </Viewbox>
+
         <Image Margin="40" Name="FirstDie" Grid.Row="1" Grid.Column="1" Source="{Binding FirstDiceImageCode, Converter={StaticResource ImageConverter}}"></Image>
-        <Label Name="FirstDiceNumber" Content="{Binding FirstTwentyDice}" Visibility="{Binding TwentySideDice, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1" Grid.Column="1" Margin="0, 0, 0, 8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"></Label>
+        <Label Name="FirstDiceNumber" Content="{Binding FirstTwentyDice}" Visibility="{Binding TwentySideDice, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1" Grid.Column="1" Margin="0, 0, 2.5, 8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"></Label>
         <Image Margin="40" Name="SecondDie" Grid.Row="1" Grid.Column="2" Source="{Binding SecondDiceImageCode, Converter={StaticResource ImageConverter}}"></Image>
-        <Label Name="SecondDiceNumber" Visibility="{Binding TwentySideDice, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1" Grid.Column="2" Content="{Binding SecondTwentyDice}" Margin="0, 0, 0, 8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"></Label>
+        <Label Name="SecondDiceNumber" Visibility="{Binding TwentySideDice, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1" Grid.Column="2" Content="{Binding SecondTwentyDice}" Margin="0, 0, 2.5, 8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"></Label>
         <Border Margin="3" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" CornerRadius="45" BorderBrush="#FF1A0082" BorderThickness="10" Width="95">
             <Button Cursor="Hand" Foreground="#FF00FF03" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="SemiBold" BorderThickness="0" Background="Transparent" Click="Button_Click" Height="51" VerticalAlignment="Center" Style="{DynamicResource ButtonNoHover}">
                 <Button.Effect>

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Media;
 using System.Runtime.CompilerServices;
-using System.IO;
 
 namespace Dice_Simulator
 {
@@ -34,7 +32,7 @@ namespace Dice_Simulator
         public bool TwentySideDice
         {
             get { return twentySideDice; }
-            set { twentySideDice = value; notifyChange(); resetBoard(); }
+            set { twentySideDice = value; notifyChange(); updateBoard(); }
         }
 
         private bool sound = false;
@@ -57,7 +55,6 @@ namespace Dice_Simulator
             get { return secondDiceImageCode; }
             set { secondDiceImageCode = value; notifyChange(); }
         }
-
 
         private int firstTwentyDice = 0;
         public int FirstTwentyDice
@@ -88,17 +85,14 @@ namespace Dice_Simulator
                 FirstTwentyDice = die1;
                 SecondTwentyDice = die2;
             }
-
-            //string rollSound = Environment.CurrentDirectory + $"..\\..\\..\\Sounds\\4.wav";
-            //SoundPlayer s = new SoundPlayer();
-            //s.SoundLocation = testrollSound;
-            //s.Load();
-            //s.Play();
         }
 
-        public void resetBoard()
+        public void updateBoard()
         {
-
+            if (TwentySideDice)
+                FirstDiceImageCode = SecondDiceImageCode = DieImageCodes.TWENTY_SIDE;
+            else
+                FirstDiceImageCode = SecondDiceImageCode = DieImageCodes.NONE;
         }
         #region Property Changed
         public event PropertyChangedEventHandler PropertyChanged;
