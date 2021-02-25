@@ -36,7 +36,6 @@
             </Viewbox.Effect>
             <CheckBox Content="20 Side Dice" Foreground="#FFFF3000" IsChecked="{Binding TwentySideDice}" FontStyle="Italic" FontWeight="DemiBold" Width="100" BorderBrush="Red" Background="White"></CheckBox>
         </Viewbox>
-
         <Image Margin="40" Name="FirstDie" Grid.Row="1" Grid.Column="1" Source="{Binding FirstDiceImageCode, Converter={StaticResource ImageConverter}}"></Image>
         <Label Name="FirstDiceNumber" Content="{Binding FirstTwentyDice}" Visibility="{Binding TwentySideDice, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1" Grid.Column="1" Margin="0, 0, 2.5, 8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"></Label>
         <Image Margin="40" Name="SecondDie" Grid.Row="1" Grid.Column="2" Source="{Binding SecondDiceImageCode, Converter={StaticResource ImageConverter}}"></Image>

@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Dice_Simulator
 {
@@ -21,10 +11,25 @@ namespace Dice_Simulator
     public partial class MainWindow : Window
     {
         readonly VM vm = new VM();
+
+        const string FILENAME = "output.txt";
+        const string RESULT_FOLDER_NAME = "DiceSim";
+
+        readonly StringBuilder output = new StringBuilder();
+        readonly string fullName;
         public MainWindow()
         {
             InitializeComponent();
             DataContext = vm;
+
+            string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), RESULT_FOLDER_NAME);
+
+            if (!Directory.Exists(filePath))
+                Directory.CreateDirectory(filePath);
+
+            fullName = System.IO.Path.Combine(filePath, FILENAME);
+
+            File.AppendAllText(fullName, $"Dice Rolls from {DateTime.Now:MMMM dd, yyyy HH:mm:ss}{Environment.NewLine}");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
