@@ -39,13 +39,6 @@ namespace Dice_Simulator
             set { twentySideDice = value; notifyChange(); updateBoard(); }
         }
 
-        private bool sound = false;
-        public bool Sound
-        {
-            get { return sound; }
-            set { sound = value; notifyChange(); }
-        }
-
         private DieImageCodes firstDiceImageCode = DieImageCodes.NONE;
         public DieImageCodes FirstDiceImageCode
         {
