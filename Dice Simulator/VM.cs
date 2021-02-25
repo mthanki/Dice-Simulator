@@ -25,6 +25,10 @@ namespace Dice_Simulator
             THREE
         }
 
+        const int MIN_ROLL_LIMIT = 1;
+        const int MAX_ROLL_LIMIT_SIX_SIDE = 7;
+        const int MAX_ROLL_LIMIT_TWENTY_SIDE = 21;
+
         readonly System.Random r = new Random();
 
         #region Properties
@@ -73,8 +77,8 @@ namespace Dice_Simulator
 
         public void RollDice()
         {
-            int die1 = r.Next(1, TwentySideDice ? 21 : 7);
-            int die2 = r.Next(1, TwentySideDice ? 21 : 7);
+            int die1 = r.Next(MIN_ROLL_LIMIT, TwentySideDice ? MAX_ROLL_LIMIT_TWENTY_SIDE : MAX_ROLL_LIMIT_SIX_SIDE);
+            int die2 = r.Next(MIN_ROLL_LIMIT, TwentySideDice ? MAX_ROLL_LIMIT_TWENTY_SIDE : MAX_ROLL_LIMIT_SIX_SIDE);
 
             FirstDiceImageCode = (DieImageCodes)die1;
             SecondDiceImageCode = (DieImageCodes)die2;
