@@ -112,9 +112,6 @@
     <Resource Include="Images\background.jpg" />
     <Resource Include="dice.ico" />
     <Resource Include="Images\20Dice.png" />
-    <Content Include="Sounds\1.wav" />
-    <Content Include="Sounds\2.wav" />
-    <Content Include="Sounds\3.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
