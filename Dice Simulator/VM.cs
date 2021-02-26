@@ -6,32 +6,45 @@ using System.Text;
 
 namespace Dice_Simulator
 {
+    public enum DieImageCodes
+    {
+        NONE = 0,
+        ONE = 1,
+        TWO,
+        THREE,
+        FOUR,
+        FIVE,
+        SIX,
+        TWENTY_SIDE
+    }
+
     class VM : INotifyPropertyChanged
     {
-        public enum DieImageCodes
+        const string FILENAME = "output.txt";
+        const string RESULT_FOLDER_NAME = "DiceSim";
+
+        readonly StringBuilder output = new StringBuilder();
+        string fullName;
+
+        string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), RESULT_FOLDER_NAME);
+
+        public void CreateDirectory()
         {
-            NONE = 0,
-            ONE = 1,
-            TWO,
-            THREE,
-            FOUR,
-            FIVE,
-            SIX,
-            TWENTY_SIDE
+            if (!Directory.Exists(filePath))
+                Directory.CreateDirectory(filePath);
+
+            fullName = System.IO.Path.Combine(filePath, FILENAME);
+
+            File.AppendAllText(fullName, $"Dice Rolls from {DateTime.Now:MMMM dd, yyyy HH:mm:ss}{Environment.NewLine}");
         }
 
         const int MIN_ROLL_LIMIT = 1;
         const int MAX_ROLL_LIMIT_SIX_SIDE = 7;
         const int MAX_ROLL_LIMIT_TWENTY_SIDE = 21;
-        const string RESULT_FOLDER_NAME = "DiceSim";
-        const string FILENAME = "output.txt";
         const string TWENTY_SIDE_FILE_LABEL = "Twenty Side";
         const string SIX_SIDE_FILE_LABEL = "Six Side";
 
         readonly System.Random r = new Random();
-        readonly StringBuilder output = new StringBuilder();
-
-        string fullName;
 
         #region Properties
         private bool twentySideDice = false;

@@ -22,14 +22,7 @@ namespace Dice_Simulator
             InitializeComponent();
             DataContext = vm;
 
-            string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), RESULT_FOLDER_NAME);
-
-            if (!Directory.Exists(filePath))
-                Directory.CreateDirectory(filePath);
-
-            fullName = System.IO.Path.Combine(filePath, FILENAME);
-
-            File.AppendAllText(fullName, $"Dice Rolls from {DateTime.Now:MMMM dd, yyyy HH:mm:ss}{Environment.NewLine}");
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
